@@ -249,7 +249,7 @@ I recommend that Bellabeat develops an all-encompassing wellness product designe
 
 - **Virtual Rewards and Motivation:** Implement a rewards system that offers virtual rewards and badges when users meet their sleep goals. To motivate users further, provide incentives to continue achieving these goals over extended periods, unlocking new rewards and features.
 
--**Activity Tracking:** Track users' daily steps and provide activity insights to encourage a more active lifestyle. Remind users to take breaks and move throughout the day, especially if they have sedentary jobs. Set customizable step goals and reward users for reaching them.
+- **Activity Tracking:** Track users' daily steps and provide activity insights to encourage a more active lifestyle. Remind users to take breaks and move throughout the day, especially if they have sedentary jobs. Set customizable step goals and reward users for reaching them.
 
 - **Healthy Eating Support:** Offer a feature that helps users plan their meals and track calorie intake. Provide nutritional recommendations and suggest healthier food options. Encourage users to maintain a balanced diet.
 
