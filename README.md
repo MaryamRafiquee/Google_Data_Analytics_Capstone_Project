@@ -45,9 +45,17 @@ daily_activity.head()
 ```
 <kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/61b35b26-3c4e-4993-b7b2-e64992e7f6bd)
 
-| Id         | ActivityDate  | TotalSteps | TotalDistance | TrackerDistance |	LoggedActivitiesDistance |VeryActiveDistance| ModeratelyActiveDistance | LightActiveDistance |    
+| Id         | ActivityDate  | TotalSteps | TotalDistance | TrackerDistance |	LoggedActivitiesDistance |VeryActiveDistance| ModeratelyActiveDistance | LightActiveDistance |   
 | ---------- | ------------- | ---------- | ------------  | --------------- | ------------------------ | -----------------| ------------------------ | ------------------- |
+| 1503960366	|  4/12/2016	   |   13162	   |    8.50	      |      8.50	      |          0.0	            |      1.88	       |          0.55	           |       6.06          |
+
  
+
+
+
+
+|SedentaryMinutes	| Calories |
+| --------------- | -------- | 
 
 
 
