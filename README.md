@@ -46,21 +46,24 @@ daily_activity.head()
 <kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/61b35b26-3c4e-4993-b7b2-e64992e7f6bd)
 ![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/9d0933ed-bed8-495d-8f12-63441c996f9c)</kbd> <br>
 
-**Exploring dataset**
+**Exploring dataset** <br>
 We will be working with 2 files
 ```
 daily_activity.describe()
 ```
 <kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/bf6a194f-52d5-4dac-95ab-61fc8d164906)
 ![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/4abad097-7978-48b9-8c64-a48984a893ad)</kbd> <br>
+
 ```
 daily_activity.shape
 ```
 <kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/51d11103-7a4b-4c83-bdb5-dfba4962fe48)</kbd> <br>
+
 ```
 daily_activity.info()
 ```
 <kbd> ![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/fa1fe64f-34ba-490d-9dde-41a24f51e902)</kbd> <br>
+
 ```
 daily_activity.duplicated().sum()
 ```
