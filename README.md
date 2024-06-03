@@ -36,14 +36,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns 
 import datetime as dt
 ```
-**Importing the dataset**
+**Importing the dataset**<br>
 The dataset has 18 csv files, however the majority of them have been merged into a single file called dailyActivity_merged.csv, which will be my primary focus. I'll also use certain files that weren't merged into this particular one
 
 ```
 daily_activity = pd.read_csv('.../Fitabase Data/dailyActivity_merged.csv')
 daily_activity.head()
 ```
-
+![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/61b35b26-3c4e-4993-b7b2-e64992e7f6bd)
 
 
 
