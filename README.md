@@ -44,7 +44,7 @@ daily_activity = pd.read_csv('.../Fitabase Data/dailyActivity_merged.csv')
 daily_activity.head()
 ```
 <kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/61b35b26-3c4e-4993-b7b2-e64992e7f6bd)
-<kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/9d0933ed-bed8-495d-8f12-63441c996f9c)
+![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/9d0933ed-bed8-495d-8f12-63441c996f9c)
 
 
  
