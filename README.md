@@ -43,7 +43,7 @@ The dataset has 18 csv files, however the majority of them have been merged into
 daily_activity = pd.read_csv('.../Fitabase Data/dailyActivity_merged.csv')
 daily_activity.head()
 ```
-![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/61b35b26-3c4e-4993-b7b2-e64992e7f6bd)
+<kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/61b35b26-3c4e-4993-b7b2-e64992e7f6bd)
 
 
 
