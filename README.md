@@ -45,6 +45,13 @@ daily_activity.head()
 ```
 <kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/61b35b26-3c4e-4993-b7b2-e64992e7f6bd)
 
+| Id         | ActivityDate  | TotalSteps | TotalDistance | TrackerDistance |	LoggedActivitiesDistance |VeryActiveDistance| ModeratelyActiveDistance | LightActiveDistance |    
+| ---------- | ------------- | ---------- | ------------  | --------        | --------- | ----- | -----
+| 1503960366 | Disgust       | 2020-11-07 | Photo         | Studying        | Negative  | 0     |
+| 1503960366 | Dislike       | 2021-06-17 | Photo         | Studying        | Negative  | 10    |
+| 1503960366 | Scared        | 2021-04-18 | Photo         | Studying        | Negative  | 15    | 
+| 1503960366 | Scared        | 2021-04-18 | Photo         | Studying        | Negative  | 15    | 
+| 1503960366 | Scared        | 2021-04-18 | Photo         | Studying        | Negative  | 15    | 
 
 
 
