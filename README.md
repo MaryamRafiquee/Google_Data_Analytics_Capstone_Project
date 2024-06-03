@@ -74,8 +74,7 @@ hourly_intensity = pd.read_csv('.../Fitabase Data/hourlyIntensities_merged.csv')
 
 hourly_intensity.info()
 ```
-<kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/d13ce7a1-89a3-4ea7-a253-8d737434a00f)
-</kbd> <br>
+<kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/ed994bff-2826-4aa6-a368-a12f0818cc8b)</kbd><br>
 
 ```
 hourly_intensity.duplicated().sum()
@@ -91,6 +90,7 @@ daily_activity['ActivityDate'] = pd.to_datetime(daily_activity['ActivityDate'],f
 ```
 hourly_intensity['ActivityHour'] = pd.to_datetime(hourly_intensity['ActivityHour'],format = '%m/%d/%Y %I:%M:%S %p')
 ```
+<br>
 To provide reliable insights, the datasets shown above were thoroughly reviewed for missing values and duplicates, as well as appropriately cleaned and formatted.
 
 ## 📊 Analyze
