@@ -68,13 +68,15 @@ daily_activity.info()
 daily_activity.duplicated().sum()
 ```
 <kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/d13ce7a1-89a3-4ea7-a253-8d737434a00f)</kbd> <br>
+
 ```
 hourly_intensity = pd.read_csv('.../Fitabase Data/hourlyIntensities_merged.csv')
-```
+
 hourly_intensity.info()
 ```
 <kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/d13ce7a1-89a3-4ea7-a253-8d737434a00f)
 </kbd> <br>
+
 ```
 hourly_intensity.duplicated().sum()
 ```
