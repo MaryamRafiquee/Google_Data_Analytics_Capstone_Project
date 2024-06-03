@@ -46,25 +46,221 @@ daily_activity.head()
 <kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/61b35b26-3c4e-4993-b7b2-e64992e7f6bd)
 ![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/9d0933ed-bed8-495d-8f12-63441c996f9c)</kbd> <br>
 
-Learning a little bit about the dataset
+**Exploring dataset**
+We will be working with 2 files
 ```
 daily_activity.describe()
 ```
+<kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/bf6a194f-52d5-4dac-95ab-61fc8d164906)
+![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/4abad097-7978-48b9-8c64-a48984a893ad)</kbd> <br>
+```
+daily_activity.shape
+```
+<kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/51d11103-7a4b-4c83-bdb5-dfba4962fe48)</kbd> <br>
+```
+daily_activity.info()
+```
+<kbd> ![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/fa1fe64f-34ba-490d-9dde-41a24f51e902)</kbd> <br>
+```
+daily_activity.duplicated().sum()
+```
+<kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/d13ce7a1-89a3-4ea7-a253-8d737434a00f)</kbd> <br>
+```
+hourly_intensity = pd.read_csv('.../Fitabase Data/hourlyIntensities_merged.csv')
+```
+hourly_intensity.info()
+```
+<kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/d13ce7a1-89a3-4ea7-a253-8d737434a00f)
+</kbd> <br>
+```
+hourly_intensity.duplicated().sum()
+```
+<kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/d13ce7a1-89a3-4ea7-a253-8d737434a00f)</kbd> <br>
+
+**Cleaning the dataset**<br>
+Modifying the ActivityDate column By changing its datatype and format
+
+```
+daily_activity['ActivityDate'] = pd.to_datetime(daily_activity['ActivityDate'],format ='%m/%d/%Y')
+```
+```
+hourly_intensity['ActivityHour'] = pd.to_datetime(hourly_intensity['ActivityHour'],format = '%m/%d/%Y %I:%M:%S %p')
+```
+To provide reliable insights, the datasets shown above were thoroughly reviewed for missing values and duplicates, as well as appropriately cleaned and formatted.
+
+## 📊 Analyze
+It is now time to analyse the provided datasets in order to extract relevant information.
+```
+print("No of unique values: ",daily_activity['Id'].nunique())
+print("No of unique values: ",hourly_intensity['Id'].nunique())
+```
+<kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/70436e13-65a9-4422-84f3-3a2634f0370e)</kbd> <br>
+
+This dataset is made up of data gathered from 33 distinct individuals over a period of two months.
+
+```
+daily_activity['weekdays'] = daily_activity['ActivityDate'].dt.day_name()
+daily_activity.head()
+```
+<kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/4cf564e1-80f3-4421-93cb-ae532579fa8d)</kbd> <br>
+
+```
+day_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+daily_activity['weekdays'] = pd.Categorical(daily_activity['weekdays'], categories=day_order, ordered=True)
+```
+
+```
+average_daily_steps = daily_activity.groupby('weekdays').agg(mean_total_steps=('TotalSteps', 'mean')).reset_index()
+
+daily_activity['avg_steps'] = daily_activity['TotalSteps'].mean()
+summary_avg_steps = daily_activity['avg_steps'].describe()
+
+overall_avg = daily_activity['avg_steps'].mean()
+```
+
+```
+print("Average daily steps grouped by day of the week:")
+print(average_daily_steps)
+
+print("\nSummary of avg_steps:")
+print(summary_avg_steps)
+
+print("\nOverall average of avg_steps:")
+print(overall_avg)
+```
+<kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/77a8fed8-dcc4-4c8e-a2af-ca6b320669b2) </kbd> <br>
+
+I created an additional column to the dataset in the code shown above to calculate the days of the week using the date provided because I want to determine what day of the week is the most steps taken.I took average steps and then used the groupby() function to group them with the days of the week
+
+```
+very_active_mins = daily_activity['VeryActiveMinutes'].sum()
+fairly_active_mins = daily_activity['FairlyActiveMinutes'].sum()
+lightly_active_mins = daily_activity['LightlyActiveMinutes'].sum()
+sedentary_mins = daily_activity['SedentaryMinutes'].sum()
+
+print("Very Active Minutes:", very_active_mins)
+print("Fairly Active Minutes:", fairly_active_mins)
+print("Lightly Active Minutes:", lightly_active_mins)
+print("Sedentary Minutes:", sedentary_mins)
+```
+<kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/06436448-010d-4f81-bc0d-900cac17bdb4)</kbd> <br>
+
+Now analyzing the other file
+
+```
+hourly_intensity['hour'] = hourly_intensity['ActivityHour'].dt.hour
+Avevrage_Intensity = hourly_intensity.groupby('hour').agg(AverageIntensity=('AverageIntensity', 'sum')).reset_index()
+print(Avevrage_Intensity)
+```
+<kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/7a5cb86c-3c7e-44fd-89f4-36f692c980fd)</kbd><br>
+
+I divided the ActivityHour column into two columns, one for the date and one for the hour, with the goal of analysing the time of day when users are the most active
+
+## 📋 Share
+**Visualization of Data**<br>
+Its now time to visualize our finding and present it to the stakeholder
+
+#### Relationship between average steps and days of the week
+
+```
+plt.figure(figsize=(10, 8))
+plt.bar(average_daily_steps['weekdays'], average_daily_steps['mean_total_steps'], color='blue')
+plt.axhline(y=overall_avg, color='black', linestyle='--', linewidth=1)
+plt.text(6, overall_avg, 'Average Steps', color='black', ha='right', va='bottom')
+plt.title('Average Steps Taken on Each Day')
+plt.xlabel('Day of the week')
+plt.ylabel('Average Steps')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```
+<kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/f4ed2e65-c87d-46d9-89b4-47f42ca99a87)</kbd><br>
+
+We can observe that the bar crosses the average line with a larger margin on Tuesday and Saturday, with a narrower margin on Monday, and with barely inches to spare on Wednesday. Other days are below average. <br>
+
+#### Tracking Activity
+
+```
+slices = [very_active_mins, fairly_active_mins, lightly_active_mins, sedentary_mins]
+labels = ["Very active minutes", "Fairly active minutes", "Lightly active minutes", "Sedentary minutes"]
+colours = ['#1f77b4', '#ff7f0e', '#'#2ca02c', '#d62728']
+explode = [0, 0, 0, 0.1]
+explode = [0, 0, 0, 0.1]
+plt.style.use("default")
+plt.pie(slices, labels = labels, 
+        colors = colours, wedgeprops = {"edgecolor": "black"}, 
+        explode = explode, autopct = "%1.1f%%")
+plt.title("Percentage of Activity in Minutes")
+plt.tight_layout()
+plt.show()
+```
+<kbd>![Image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/8f91a584-002f-45b4-9cae-e3fca89d1c0e)</kbd><br>
+
+Here, it is clear that the sedantary rate is the greatest, at 81.3%, implying that most of the time individuals aren't extremely active. Lightly active minutes account for 15.8%, while faily active minutes and very active minutes account for only 1.1% and 1.7%, respectively <br>
+
+#### Relation between hour and average intensity
+
+```
+plt.figure(figsize=(10, 6))
+plt.plot(Avevrage_Intensity['hour'], Avevrage_Intensity['AverageIntensity'], color='red', marker='o', linestyle='-')
+plt.title('Hourly Average Intensity')
+plt.xlabel('Hour of the Day')
+plt.ylabel('Average Intensity')
+plt.grid(True)
+plt.show()
+```
+<kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/6c0aa231-2579-4933-86fd-2ce509371168)</kbd><br>
+
+We concluded that the average intensity increases throughout the day, beginning in the afternoon.<br>
+
+#### Corelation between Total Distance and Calories
+
+Total Steps and Calories are directly proportional; the more steps you take, the more calories you'll burn. Total Steps and Total Distance also exhibit a positive tendency, we're looking for a relationship between Total Distance and Calories here.
+
+```
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=daily_activity, x='TotalDistance', y='Calories', color='blue', label='Data points')
+sns.regplot(data=daily_activity, x='TotalDistance', y='Calories', scatter=False, color='green', label='Smooth line')
+plt.title('Total Distance vs Calories')
+plt.xlabel('Total Distance')
+plt.ylabel('Calories')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+<kbd>![image](https://github.com/MaryamRafiquee/Google_Data_Analytics_Capstone_Project/assets/170947012/1823c6fc-39d1-4c8a-8340-1e1362d6440f)</kbd><br>
+
+We discovered that total distance and calories also exhibit a positive trend.
+
+### 🧗‍♀️ Act
+After studying the datasets, I came to certain conclusions and produced some recommendations that will aid Bellabeat's marketing approach
+
+#### Recommendation
+I recommend that Bellabeat develops an all-encompassing wellness product designed to be with users throughout the day, catering to various dimensions of their health and overall well-being.<br>
+- **All-Day Wearable:** Develop a versatile smart wearable that users can comfortably wear throughout the day, regardless of their activities. This could be a combination of a stylish wristband or necklace with a companion mobile app.
+
+- **Sleep Management:** Incorporate a sleep tracking feature that allows users to set bedtime and wakeup time goals for achieving 8 hours of proper sleep. The wearable can monitor sleep patterns, heart rate, and sleep quality. Send gentle notifications when users are past their bedtime to encourage healthier sleep habits.
+
+- **Virtual Rewards and Motivation:** Implement a rewards system that offers virtual rewards and badges when users meet their sleep goals. To motivate users further, provide incentives to continue achieving these goals over extended periods, unlocking new rewards and features.
+
+-**Activity Tracking:** Track users' daily steps and provide activity insights to encourage a more active lifestyle. Remind users to take breaks and move throughout the day, especially if they have sedentary jobs. Set customizable step goals and reward users for reaching them.
+
+- **Healthy Eating Support:** Offer a feature that helps users plan their meals and track calorie intake. Provide nutritional recommendations and suggest healthier food options. Encourage users to maintain a balanced diet.
 
 
+- **Workout Recommendations:** Offer personalized workout suggestions based on the user's fitness level and goals. Include video demonstrations and tutorials for exercises. Remind users to engage in physical activity regularly.
 
+- **Partnerships and Discounts:** Collaborate with wellness and fitness-related companies to provide exclusive discounts and offers to Bellabeat users. This could include discounts on gym memberships, healthy meal delivery services, or wellness products. Partnerships can enhance the value proposition of the Bellabeat product.
 
+- **Health Notifications:** Utilize the wearable to send timely health notifications and tips. For example, remind users to stay hydrated, take deep breaths, or practice mindfulness exercises to reduce stress.
 
- 
+- **Integration with Healthcare:** Explore the possibility of integrating with healthcare providers and professionals for more personalized health advice and monitoring, especially for users with specific health conditions or goals.
 
+- **Data Privacy and Security:** Ensure robust data privacy and security measures are in place to protect users' sensitive health data.
 
+- **Community and Support:** Create a supportive community within the Bellabeat app where users can share their progress, challenges, and tips. Provide access to expert advice and wellness resources.
 
- 
-
-
-
-
-
-
-
-
+- **Continuous Improvement:** Gather user feedback and use data analytics to continually improve the product's features and recommendations. Stay attuned to emerging trends in health and wellness.
+<br>
+By implementing these suggestions, Bellabeat can create a well-rounded product that addresses various aspects of users' health and motivates them to lead a healthier and more active lifestyle. Collaboration with other companies can further enhance the user experience and make the product even more valuable to its target audience
