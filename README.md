@@ -1,2 +1,4 @@
-# Google_Data_Analytics_Capstone_Project
-### CASE STUDY: Bellabeat Fitness Data Analysis
+# Case Study With Python
+
+**title:** Bellabeat Fitness Data Analysis
+**Dataset:** [Kaggle](https://www.kaggle.com/datasets/arashnic/fitbit)
